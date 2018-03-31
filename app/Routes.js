@@ -1,12 +1,8 @@
 /**
  * Routes
  */
-const Home = require('./Home')
-const Books = require('./Books')
-const Authors = require('./Authors')
+const Users = require('./Users')
 
 module.exports = app => {
-  app.use('/', Home)
-  app.use('/books', Books)
-  app.use('/authors', Authors)
+  app.use('/users', Users)
 }

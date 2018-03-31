@@ -8,7 +8,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const validate = require('express-validator')
 
-const { locale, env } = require('../config/app')
+const { env } = require('../config/app')
 
 const app = express()
 const logger = env === 'development' ? 'dev' : 'common'
@@ -22,8 +22,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }))
 
-consign({ locale })
-  .include('app/Routes.js')
+consign()
+  .include('bootstrap/database.js')
+  .then('app/Routes.js')
   .into(app)
 
 module.exports = app
