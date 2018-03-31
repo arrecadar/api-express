@@ -1,0 +1,44 @@
+{
+  "name": "@arrecadar/api",
+  "version": "0.1.0",
+  "description": "Arrecadar API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitub.com/arrecadar/api.git"
+  },
+  "keywords": [
+    "API",
+    "Node",
+    "API",
+    "Express"
+  ],
+  "author": "Arrecadar",
+  "license": "MIT",
+  "dependencies": {
+    "@anarklab/expressive-controller": "^0.1.0",
+    "body-parser": "^1.18.2",
+    "consign": "^0.1.6",
+    "express": "^4.16.2",
+    "express-validator": "^5.0.0",
+    "helmet": "^3.11.0",
+    "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "dotenv": "^5.0.0",
+    "eslint": "^4.17.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^22.2.1",
+    "nodemon": "^1.14.12",
+    "supertest": "^3.0.0"
+  }
+}
