@@ -1,37 +1,11 @@
 const {
-  pipe,
-  prop,
-  isEmpty,
-  not
-} = require('ramda')
-
-const {
   Controller,
-  Responses,
   Transform
 } = require('@anarklab/expressive-controller')
+const { handleError, handleResponse } = require('../Responses')
 
 const Repository = require('./repository')
 const controller = Controller(Repository)
-const {
-  responseWithInternalServerError,
-  responseWithNotFoundError,
-  responseWithOK
-} = Responses
-
-const userExists = pipe(prop('data'), isEmpty, not)
-
-const notFound = response => responseWithNotFoundError(response)(['user not found'])
-
-const handleUserResponse = response => user =>
-  userExists(user)
-    ? responseWithOK(response)(user)
-    : notFound(response)
-
-const handleErrorObjectId = response => error =>
-  error.kind === 'ObjectId'
-    ? notFound(response)
-    : responseWithInternalServerError(response)
 
 const show = (request, response) => {
   const id = request.params.id
@@ -39,8 +13,8 @@ const show = (request, response) => {
   Repository
     .findOne(id)
     .then(Transform)
-    .then(handleUserResponse(response))
-    .catch(handleErrorObjectId(response))
+    .then(handleResponse(response))
+    .catch(handleError(response))
 }
 
 module.exports = {
