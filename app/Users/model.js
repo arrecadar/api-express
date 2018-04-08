@@ -17,6 +17,11 @@ const UserScheme = new Schema({
     required: true,
     select: false
   }
+}, {
+  timestamps: {
+    createdAt: 'created_at',
+    updatedAt: 'updated_at'
+  }
 })
 
 UserScheme.pre('save', function (next) {
