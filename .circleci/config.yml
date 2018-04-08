@@ -23,10 +23,6 @@ jobs:
           name: Linting source files
           command: yarn lint
 
-      - run:
-          name: Running tests
-          command: yarn test
-
       - save_cache:
           paths:
             - node_modules
