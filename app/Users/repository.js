@@ -1,11 +1,18 @@
-const { identity } = require('ramda')
 const User = require('./model')
 
-const find = () => User.find().catch(identity)
-const findOne = id => User.find({ _id: id }).catch(identity)
-const create = user => new User(user).save().catch(identity)
-const save = (id, data) => User.findByIdAndUpdate(id, data).catch(identity)
-const remove = id => User.findByIdAndRemove(id).catch(identity)
+const handleSaveErrors = error => {
+  if (error.code === 11000) {
+    throw new Error('email already exists')
+  }
+
+  throw new Error(error)
+}
+
+const find = () => User.find()
+const findOne = id => User.findById(id)
+const create = user => new User(user).save().catch(handleSaveErrors)
+const save = (id, data) => User.findByIdAndUpdate(id, data).catch(handleSaveErrors)
+const remove = id => User.findByIdAndRemove(id)
 
 module.exports = {
   find,
