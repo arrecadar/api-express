@@ -1,20 +1,16 @@
-const { Responses } = require('@anarklab/expressive-controller')
+const Validator = require('validatorjs')
 
-const validate = (request, response, next) => {
-  request.checkBody('name', 'Field name is invalid').notEmpty()
-  request.checkBody('email', 'Field email is invalid').notEmpty().isEmail()
-
-  request.getValidationResult()
-    .then(handleErrors(response, next))
-    .catch(Responses.responseWithInternalServerError(response))
+const schema = {
+  name: 'string|required',
+  email: 'email|required'
 }
 
-const handleErrors = (response, next) => errors => {
-  if (errors.isEmpty()) {
-    return next()
+module.exports = (request, response, next) => {
+  const validation = new Validator(request.body, schema)
+
+  if (validation.fails()) {
+    return response.status(422).json(validation.errors)
   }
 
-  return Responses.responseWithUnprocessableEntity(response)(errors)
+  return next()
 }
-
-module.exports = validate
