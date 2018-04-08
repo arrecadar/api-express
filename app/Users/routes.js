@@ -4,7 +4,7 @@ const request = require('./request')
 
 Router.get('/', users.index)
 Router.get('/:id', users.show)
-Router.patch('/:id', users.save)
+Router.put('/:id', users.save)
 Router.delete('/:id', users.remove)
 Router.post('/', request, users.store)
 
