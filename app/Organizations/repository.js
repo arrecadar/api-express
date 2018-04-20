@@ -17,10 +17,16 @@ const findOne = (id, query) => (
     .populate([...query, 'owner'])
 )
 const create = ong => new Organization(ong).save().catch(handleSaveErrors)
+const save = (id, data) => (
+  Organization
+    .findByIdAndUpdate(id, data)
+    .catch(handleSaveErrors)
+)
 
 
 module.exports = {
   find,
   create,
   findOne,
+  save
 }
