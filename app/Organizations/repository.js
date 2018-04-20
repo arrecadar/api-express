@@ -7,6 +7,13 @@ const find = ({ page = 1, limit = 15 }) => (
     .then(Transform)
 )
 
+const findOne = (id, query) => (
+  Organization
+    .findOne({ _id: id })
+    .populate([...query, 'owner'])
+)
+
 module.exports = {
   find
+  findOne,
 }
