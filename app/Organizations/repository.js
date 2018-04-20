@@ -1,6 +1,10 @@
 const Transform = require('../Transform')
 const Organization = require('./model')
 
+const handleSaveErrors = error => {
+  throw new Error(error)
+}
+
 const find = ({ page = 1, limit = 15 }) => (
   Organization
     .paginate({}, { limit, page })
@@ -12,8 +16,11 @@ const findOne = (id, query) => (
     .findOne({ _id: id })
     .populate([...query, 'owner'])
 )
+const create = ong => new Organization(ong).save().catch(handleSaveErrors)
+
 
 module.exports = {
-  find
+  find,
+  create,
   findOne,
 }
