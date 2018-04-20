@@ -22,11 +22,12 @@ const save = (id, data) => (
     .findByIdAndUpdate(id, data)
     .catch(handleSaveErrors)
 )
-
+const remove = id => Organization.findOneAndRemove(id)
 
 module.exports = {
   find,
   create,
   findOne,
+  remove,
   save
 }
