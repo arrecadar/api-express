@@ -1,4 +1,4 @@
-const Validator = require('validatorjs')
+const validate = require('@anarklab/expressive-request')
 
 const schema = {
   name: 'string|required',
@@ -6,12 +6,4 @@ const schema = {
   password: 'string|min:6'
 }
 
-module.exports = (request, response, next) => {
-  const validate = new Validator(request.body, schema)
-
-  if (validate.fails()) {
-    return response.status(422).json(validate.errors)
-  }
-
-  return next()
-}
+module.exports = validate(schema)
