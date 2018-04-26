@@ -8,7 +8,7 @@
 - Campaigns
   - [x] GET /campaigns
   - [x] POST /campaigns
-  - [ ] GET /campaigns/:id
+  - [x] GET /campaigns/:id
   - [ ] PUT /campaigns/:id
   - [ ] DELETE /campaigns/:id
 

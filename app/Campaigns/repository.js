@@ -11,6 +11,12 @@ const find = ({ page = 1, limit = 15 }) => (
     .then(Transform)
 )
 
+const findOne = id => (
+  Campaign
+    .findById(id)
+    .populate('ong')
+)
+
 const create = campaign => (
   new Campaign(campaign)
     .save()
@@ -19,5 +25,6 @@ const create = campaign => (
 
 module.exports = {
   find,
-  create
+  create,
+  findOne
 }
