@@ -24,6 +24,7 @@
   "dependencies": {
     "@anarklab/expressive-controller": "^0.3.0",
     "@anarklab/expressive-mongodb": "^0.1.0",
+    "@anarklab/expressive-request": "^0.1.0",
     "@teamsight/mongoose-clean": "^2.0.4",
     "bcrypt": "^2.0.0",
     "body-parser": "^1.18.2",
@@ -32,8 +33,7 @@
     "helmet": "^3.11.0",
     "mongoose-paginate": "^5.0.3",
     "morgan": "^1.9.0",
-    "ramda": "^0.25.0",
-    "validatorjs": "^3.14.2"
+    "ramda": "^0.25.0"
   },
   "devDependencies": {
     "dotenv": "^5.0.0",

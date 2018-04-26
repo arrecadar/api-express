@@ -1,4 +1,4 @@
-const Validator = require('validatorjs')
+const validate = require('@anarklab/expressive-request')
 
 const schema = {
   name: 'string|required',
@@ -14,18 +14,11 @@ const schema = {
   },
   contact: {
     'emails.*': 'email',
+    phones: 'array|required',
     'phones.*': 'string|numeric',
     'links.*': 'url'
   },
   'persons.*': 'string'
 }
 
-module.exports = (request, response, next) => {
-  const validation = new Validator(request.body, schema)
-
-  if (validation.fails()) {
-    return response.status(422).json(validation.errors)
-  }
-
-  return next()
-}
+module.exports = validate(schema)
