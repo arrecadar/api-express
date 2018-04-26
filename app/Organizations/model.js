@@ -43,4 +43,4 @@ const OrganizationSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('Organizations', OrganizationSchema)
+module.exports = mongoose.model('Organization', OrganizationSchema)
