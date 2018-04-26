@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+  api-dev:
+    build: .
+    container_name: api-dev
+    command: npm run dev
+    env_file: .env
+    volumes:
+      - ./:/api
+      - /api/node_modules
+    ports:
+      - 3000:3000
