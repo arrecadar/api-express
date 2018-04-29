@@ -9,7 +9,7 @@
   - [x] GET /campaigns
   - [x] POST /campaigns
   - [x] GET /campaigns/:id
-  - [ ] PUT /campaigns/:id
+  - [x] PUT /campaigns/:id
   - [ ] DELETE /campaigns/:id
 
 #### Application

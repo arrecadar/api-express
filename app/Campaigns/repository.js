@@ -23,8 +23,15 @@ const create = campaign => (
     .catch(handleSaveErrors)
 )
 
+const save = (id, data) => (
+  Campaign
+    .findByIdAndUpdate(id, data)
+    .catch(handleSaveErrors)
+)
+
 module.exports = {
   find,
   create,
-  findOne
+  findOne,
+  save
 }
