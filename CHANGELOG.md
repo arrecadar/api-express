@@ -10,7 +10,7 @@
   - [x] POST /campaigns
   - [x] GET /campaigns/:id
   - [x] PUT /campaigns/:id
-  - [ ] DELETE /campaigns/:id
+  - [x] DELETE /campaigns/:id
 
 #### Application
 - [ ] resources: add pagination

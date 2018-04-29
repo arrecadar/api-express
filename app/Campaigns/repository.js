@@ -29,9 +29,12 @@ const save = (id, data) => (
     .catch(handleSaveErrors)
 )
 
+const remove = id => Campaign.findByIdAndRemove(id)
+
 module.exports = {
   find,
   create,
   findOne,
-  save
+  save,
+  remove
 }
