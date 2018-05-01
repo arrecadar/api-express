@@ -5,7 +5,12 @@
 ### Recources
 - [x] Users
 - [x] Ongs
-- [ ] Campaigns
+- Campaigns
+  - [x] GET /campaigns
+  - [x] POST /campaigns
+  - [x] GET /campaigns/:id
+  - [x] PUT /campaigns/:id
+  - [x] DELETE /campaigns/:id
 
 #### Application
 - [ ] resources: add pagination
