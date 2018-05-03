@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({
 
 consign()
   .include('bootstrap/database.js')
+  .then('bootstrap/authenticate.js')
   .then('app/Routes.js')
   .into(app)
 
