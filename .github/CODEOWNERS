@@ -1,0 +1,7 @@
+# Arrecadar/API code owners
+* @uselessdev
+* @flyingluscas
+
+# Infra and Docker
+Dockerfile @flyingluscas
+docker-compose.yml @flyingluscas 
