@@ -2,15 +2,9 @@
 
 ## Unreleased
 
-### Recources
-- [x] Users
-- [x] Ongs
-- Campaigns
-  - [x] GET /campaigns
-  - [x] POST /campaigns
-  - [x] GET /campaigns/:id
-  - [x] PUT /campaigns/:id
-  - [x] DELETE /campaigns/:id
-
-#### Application
+### Add
+- [x] Users.
+- [x] Ongs.
+- [x] Campaigns
+- [x] Transformers folder to handle with custom transformers.
 - [ ] resources: add pagination
