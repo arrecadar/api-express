@@ -1,5 +1,5 @@
 const Campaign = require('./model')
-const Transform = require('../Transform')
+const Transform = require('../Transformers/paginate')
 
 const handleSaveErrors = error => {
   throw new Error(error)

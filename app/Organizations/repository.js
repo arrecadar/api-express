@@ -1,4 +1,3 @@
-// const Transform = require('../Transform')
 const Transform = require('../Transformers/paginate')
 const Organization = require('./model')
 
