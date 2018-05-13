@@ -29,6 +29,7 @@
     "bcrypt": "^2.0.0",
     "body-parser": "^1.18.2",
     "consign": "^0.1.6",
+    "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "helmet": "^3.11.0",
     "mongoose-paginate": "^5.0.3",
@@ -36,7 +37,6 @@
     "ramda": "^0.25.0"
   },
   "devDependencies": {
-    "dotenv": "^5.0.0",
     "eslint": "^4.17.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
