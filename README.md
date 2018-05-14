@@ -2,17 +2,33 @@
 > API
 
 ## TABLE OF CONTENTS
-- [Up and running](#up-and-running)
+- [Running and up](#running-and-up)
 - [Support](#support)
 - [Contributing](#contributing)
 - [History](#history)
 - [License](#license)
 
-## Up and running
-You can run the API with just one simple command:
+## Running and up
+You can running the api follow the steps bellow:
 
 ```bash
-$ docker-compose up -d api
+git clone https://github.com/arrecadar/api.git
+cd api
+cp .env.example .env
+```
+
+in this point you need to configure your database uri, the only requirement setting is
+the mongodb uri, in `.env` find the `MONGODB_URI` and change to your connection uri:
+
+``` bash
+MONGODB_URI=mongodb://<user>:<password>@<host>:<port>/<database>
+```
+
+Now you can continue, still in API folder:
+
+```bash
+yarn # or npm install
+yarn start # or npm start
 ```
 
 ### Support
