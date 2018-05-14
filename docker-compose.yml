@@ -1,0 +1,29 @@
+version: '2.1'
+
+services:
+  mongo:
+    image: mongo:3.6.4
+    container_name: arrecadar-mongo
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo localhost:27017 --quiet
+      interval: 5s
+      retries: 3
+    expose:
+      - 27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: arrecadar
+      MONGO_INITDB_ROOT_PASSWORD: secret
+
+  api:
+    build: .
+    container_name: arrecadar-api
+    command: npm run dev
+    env_file: .env
+    volumes:
+      - ./:/api
+      - /api/node_modules
+    ports:
+      - 3000:3000
+    depends_on:
+      mongo:
+        condition: service_healthy
