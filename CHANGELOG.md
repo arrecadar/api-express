@@ -1,6 +1,10 @@
 # CHANGE LOG
 
 ## Unreleased
+- [ ] Auth: add token refresh
+- [ ] Register: add email validations
+- [ ] Resources: add paginations
+- [ ] Resources: index routes return `error not found` when needs to return `{ data: [] }`
 
 ### Add
 - [x] Users.
@@ -14,3 +18,9 @@
 - [ ] Register
   - When register send an email confirmation.
 - [ ] resources: add pagination.
+- [x] Added public routes
+  - [x] GET /ongs
+  - [x] GET /ongs/:id
+  - [x] GET /campaigns
+  - [x] GET /campaigns/:id
+  - [x] POST /users

@@ -6,8 +6,8 @@ const request = require('./request')
 
 Router.get('/', authorizeWithJwt, controller.index)
 Router.get('/:id', controller.show)
-Router.put('/:id', controller.save)
-Router.post('/', request, controller.store)
-Router.delete('/:id', controller.remove)
+Router.put('/:id', authorizeWithJwt, controller.save)
+Router.post('/', authorizeWithJwt, request, controller.store)
+Router.delete('/:id', authorizeWithJwt, controller.remove)
 
 module.exports = Router
