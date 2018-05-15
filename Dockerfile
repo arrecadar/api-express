@@ -5,5 +5,4 @@ COPY ./package.json /api/package.json
 WORKDIR /api
 
 RUN apk add --no-cache python make g++ && \
-    npm rebuild && \
     npm install --silent
