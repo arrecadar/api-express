@@ -5,11 +5,12 @@
 ### Add
 - [x] Users.
 - [x] Ongs.
-- [x] Campaigns
+- [x] Campaigns.
 - [x] Transformers folder to handle with custom transformers.
 - [x] Authentication.
   - [x] Login with email and password.
   - [x] JWT authorization.
-  - [x] Users register are now logged in after register.
   - [ ] Token Refresh
-- [ ] resources: add pagination
+- [ ] Register
+  - When register send an email confirmation.
+- [ ] resources: add pagination.

@@ -24,7 +24,6 @@
   "dependencies": {
     "@anarklab/expressive-controller": "^0.3.0",
     "@anarklab/expressive-mongodb": "^0.1.0",
-    "@anarklab/expressive-passport": "^0.5.0",
     "@anarklab/expressive-request": "^0.1.0",
     "@teamsight/mongoose-clean": "^2.0.4",
     "bcrypt": "^2.0.0",
@@ -33,9 +32,14 @@
     "consign": "^0.1.6",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
+    "express-session": "^1.15.6",
     "helmet": "^3.11.0",
+    "jsonwebtoken": "^8.2.1",
     "mongoose-paginate": "^5.0.3",
     "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "ramda": "^0.25.0"
   },
   "devDependencies": {

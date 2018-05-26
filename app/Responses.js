@@ -25,7 +25,16 @@ const handleError = response => error =>
     ? notFound(response)
     : responseWithInternalServerError(response)
 
+const handleUnauthorized = response => (
+  response.status(401).json({
+    errors: [
+      'Unauthorized'
+    ]
+  })
+)
+
 module.exports = {
   handleError,
-  handleResponse
+  handleResponse,
+  handleUnauthorized
 }
