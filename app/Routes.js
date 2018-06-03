@@ -1,14 +1,14 @@
 /**
  * Routes
  */
-const { jwtAuth } = require('@anarklab/expressive-passport')
-
 const Users = require('./Users')
 const Organizations = require('./Organizations')
 const Campaingns = require('./Campaigns')
+const Authentication = require('./Authentication')
 
 module.exports = app => {
-  app.use('/users', jwtAuth, Users)
-  app.use('/ongs', jwtAuth, Organizations)
-  app.use('/campaigns', jwtAuth, Campaingns)
+  app.use('/users', Users)
+  app.use('/ongs', Organizations)
+  app.use('/campaigns', Campaingns)
+  app.use('/', Authentication)
 }
