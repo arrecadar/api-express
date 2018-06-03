@@ -1,11 +1,13 @@
 const Router = require('express').Router()
+const { authorizeWithJwt } = require('../Authentication/middleware')
+
 const controller = require('./controller')
 const request = require('./request')
 
 Router.get('/', controller.index)
-Router.post('/', request, controller.store)
 Router.get('/:id', controller.show)
-Router.put('/:id', controller.save)
-Router.delete('/:id', controller.remove)
+Router.post('/', authorizeWithJwt, request, controller.store)
+Router.put('/:id', authorizeWithJwt, controller.save)
+Router.delete('/:id', authorizeWithJwt, controller.remove)
 
 module.exports = Router
