@@ -1,0 +1,22 @@
+version: 2
+
+jobs:
+  build:
+    machine: true
+    steps:
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - checkout
+      - run:
+          name: Configure environment file
+          command: cp .env.example .env
+      - run:
+          name: Build docker-compose containers
+          command: docker-compose build
+      - run:
+          name: Run tests
+          command: docker-compose run --rm test
