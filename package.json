@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint './{app,bootstrap,config,tests}/**/*.js'",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "mocha ./tests/**/*.js",
     "dev": "nodemon server.js"
   },
   "repository": {
@@ -43,14 +42,14 @@
     "ramda": "^0.25.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^4.17.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "jest": "^22.2.1",
-    "nodemon": "^1.14.12",
-    "supertest": "^3.0.0"
+    "mocha": "^5.2.0",
+    "nodemon": "^1.14.12"
   }
 }

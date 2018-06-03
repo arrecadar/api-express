@@ -14,16 +14,26 @@ services:
       MONGO_INITDB_ROOT_USERNAME: arrecadar
       MONGO_INITDB_ROOT_PASSWORD: secret
 
-  api:
+  base:
     build: .
-    container_name: arrecadar-api
-    command: npm run dev
-    env_file: .env
     volumes:
       - ./:/api
       - /api/node_modules
+
+  api:
+    extends: base
+    container_name: arrecadar-api
+    command: npm run dev
+    env_file: .env
     ports:
       - 3000:3000
     depends_on:
       mongo:
         condition: service_healthy
+
+  test:
+    extends: base
+    container_name: arrecadar-test
+    command: npm run test
+    links:
+      - api
