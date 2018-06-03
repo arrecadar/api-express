@@ -31,6 +31,11 @@ services:
       mongo:
         condition: service_healthy
 
+  lint:
+    extends: base
+    container_name: arrecadar-lint
+    command: npm run lint
+
   test:
     extends: base
     container_name: arrecadar-test
