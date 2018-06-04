@@ -6,6 +6,9 @@
   "scripts": {
     "lint": "eslint './{app,bootstrap,config,tests}/**/*.js'",
     "test": "mocha ./tests/**/*.js",
+    "test:unit": "mocha ./tests/unit/**/*.js",
+    "test:integration": "mocha ./tests/integration/**/*.js",
+    "test:functional": "mocha ./tests/functional/**/*.js",
     "dev": "nodemon server.js"
   },
   "repository": {

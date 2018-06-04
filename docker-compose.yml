@@ -50,3 +50,22 @@ services:
     command: npm run test
     links:
       - api
+
+  test-unit:
+    extends: base-tests
+    container_name: arrecadar-test
+    command: npm run test:unit
+
+  test-integration:
+    extends: base-tests
+    container_name: arrecadar-test
+    command: npm run test:integration
+    links:
+      - api
+
+  test-functional:
+    extends: base-tests
+    container_name: arrecadar-test
+    command: npm run test:functional
+    links:
+      - api
