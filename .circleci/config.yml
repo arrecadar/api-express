@@ -1,19 +1,16 @@
 version: 2
 
 jobs:
-  install:
+  test:
     machine: true
     steps:
+      - checkout
       - run:
           name: Install Docker Compose
           command: |
             curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
-  test:
-    machine: true
-    steps:
-      - checkout
       - run:
           name: Set Environment Variables
           command: cp .env.example .env
@@ -32,12 +29,31 @@ jobs:
       - run:
           name: Run Functional Tests
           command: docker-compose run --rm test-functional
+  deploy:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Install Heroku CLI
+          command: curl https://cli-assets.heroku.com/install-standalone.sh | sh
+      - run:
+          name: Sign into Container Registry
+          command: heroku container:login
+      - run:
+          name: Push Dockerfile
+          command: heroku container:push web --app=${HEROKU_APP_NAME}
+      - run:
+          name: Release
+          command: heroku container:release web --app=${HEROKU_APP_NAME}
 
 workflows:
   version: 2
-  test-deploy:
+  test-and-deploy:
     jobs:
-      - install
-      - test:
+      - test
+      - deploy:
           requires:
-            - install
+            - test
+          filters:
+            branches:
+              only: master
