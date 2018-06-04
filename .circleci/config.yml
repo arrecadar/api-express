@@ -1,7 +1,7 @@
 version: 2
 
 jobs:
-  build:
+  install:
     machine: true
     steps:
       - run:
@@ -10,16 +10,34 @@ jobs:
             curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
+  test:
+    machine: true
+    steps:
       - checkout
       - run:
-          name: Configure environment file
+          name: Set Environment Variables
           command: cp .env.example .env
       - run:
-          name: Build docker-compose containers
+          name: Build Docker Services
           command: docker-compose build
       - run:
-          name: Run linter
+          name: Run Linter
           command: docker-compose run --rm lint
       - run:
-          name: Run tests
-          command: docker-compose run --rm test
+          name: Run Unit Tests
+          command: docker-compose run --rm test-unit
+      - run:
+          name: Run Integration Tests
+          command: docker-compose run --rm test-integration
+      - run:
+          name: Run Functional Tests
+          command: docker-compose run --rm test-functional
+
+workflows:
+  version: 2
+  test-deploy:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install

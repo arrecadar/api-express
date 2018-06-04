@@ -17,8 +17,16 @@ services:
   base:
     build: .
     volumes:
-      - ./:/api
-      - /api/node_modules
+      - ./server.js:/api/server.js
+      - ./app:/api/app
+      - ./bootstrap:/api/bootstrap
+      - ./config:/api/config
+
+  base-tests:
+    extends: base
+    volumes:
+      - ./tests:/api/tests
+      - ./.eslintrc.js:/api/.eslintrc.js
 
   api:
     extends: base
@@ -32,13 +40,32 @@ services:
         condition: service_healthy
 
   lint:
-    extends: base
+    extends: base-tests
     container_name: arrecadar-lint
     command: npm run lint
 
   test:
-    extends: base
+    extends: base-tests
     container_name: arrecadar-test
     command: npm run test
+    links:
+      - api
+
+  test-unit:
+    extends: base-tests
+    container_name: arrecadar-test
+    command: npm run test:unit
+
+  test-integration:
+    extends: base-tests
+    container_name: arrecadar-test
+    command: npm run test:integration
+    links:
+      - api
+
+  test-functional:
+    extends: base-tests
+    container_name: arrecadar-test
+    command: npm run test:functional
     links:
       - api
