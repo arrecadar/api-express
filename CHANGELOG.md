@@ -1,10 +1,6 @@
 # CHANGE LOG
 
 ## Unreleased
-- [ ] Auth: add token refresh
-- [ ] Register: add email validations
-- [ ] Resources: add paginations
-- [ ] Resources: index routes return `error not found` when needs to return `{ data: [] }`
 
 ### Add
 - [x] Users.
@@ -15,9 +11,9 @@
   - [x] Login with email and password.
   - [x] JWT authorization.
   - [ ] Token Refresh
-- [ ] Register
-  - When register send an email confirmation.
-- [ ] resources: add pagination.
+- [x] Register
+  - [x] When register send an email confirmation.
+- [ ] Resources: add pagination.
 - [x] Added public routes
   - [x] GET /ongs
   - [x] GET /ongs/:id

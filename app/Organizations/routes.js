@@ -4,7 +4,7 @@ const { authorizeWithJwt } = require('../Authentication/middleware')
 const controller = require('./controller')
 const request = require('./request')
 
-Router.get('/', authorizeWithJwt, controller.index)
+Router.get('/', controller.index)
 Router.get('/:id', controller.show)
 Router.put('/:id', authorizeWithJwt, controller.save)
 Router.post('/', authorizeWithJwt, request, controller.store)

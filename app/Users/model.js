@@ -16,6 +16,10 @@ const UserScheme = new Schema({
     type: String,
     required: true,
     select: false
+  },
+  activated: {
+    type: Boolean,
+    default: false
   }
 }, {
   timestamps: {
