@@ -24,8 +24,14 @@ jobs:
           name: Run Linter
           command: docker-compose run --rm lint
       - run:
-          name: Run Tests
-          command: docker-compose run --rm test
+          name: Run Unit Tests
+          command: docker-compose run --rm test-unit
+      - run:
+          name: Run Integration Tests
+          command: docker-compose run --rm test-integration
+      - run:
+          name: Run Functional Tests
+          command: docker-compose run --rm test-functional
 
 workflows:
   version: 2
