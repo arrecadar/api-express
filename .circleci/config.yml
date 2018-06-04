@@ -18,5 +18,8 @@ jobs:
           name: Build docker-compose containers
           command: docker-compose build
       - run:
+          name: Run linter
+          command: docker-compose run --rm lint
+      - run:
           name: Run tests
           command: docker-compose run --rm test
