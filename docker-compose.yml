@@ -15,7 +15,10 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: secret
 
   base:
-    build: .
+    build:
+      context: .
+      args:
+        PRODUCTION: 'false'
     volumes:
       - ./server.js:/api/server.js
       - ./app:/api/app
