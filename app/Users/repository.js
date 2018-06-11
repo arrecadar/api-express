@@ -11,7 +11,7 @@ const handleSaveErrors = error => {
 const find = () => User.find()
 const findOne = id => User.findById(id)
 const create = user => new User(user).save().catch(handleSaveErrors)
-const save = (id, data) => User.findByIdAndUpdate(id, data).catch(handleSaveErrors)
+const save = (id, data) => User.findByIdAndUpdate(id, data, {new: true}).catch(handleSaveErrors)
 const remove = id => User.findByIdAndRemove(id)
 
 module.exports = {

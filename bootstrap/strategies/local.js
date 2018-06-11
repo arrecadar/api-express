@@ -6,7 +6,7 @@ const { key } = require('../../config/app')
 
 const auth = (email, password, done) => (
   User
-    .findOne({ email })
+    .findOne({ email, activated: true })
     .select('+password')
     .then(validatePasswordAndGetUser(password))
     .then(transformUser)

@@ -6,5 +6,6 @@ const request = require('./request')
 
 Router.get('/:id', authorizeWithJwt, users.show)
 Router.post('/', request, users.store)
+Router.get('/', authorizeWithJwt, users.index)
 
 module.exports = Router

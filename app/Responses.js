@@ -23,7 +23,7 @@ const handleResponse = response => result =>
 const handleError = response => error =>
   error.kind === 'ObjectId'
     ? notFound(response)
-    : responseWithInternalServerError(response)
+    : responseWithInternalServerError(response)(error)
 
 const handleUnauthorized = response => (
   response.status(401).json({

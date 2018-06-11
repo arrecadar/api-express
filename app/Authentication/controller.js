@@ -1,5 +1,8 @@
 const passport = require('passport')
-const { handleUnauthorized } = require('../Responses')
+const Token = require('./token')
+const trasnformUser = require('../Transformers/user')
+const UserRepository = require('../Users/repository')
+const { handleUnauthorized, handleResponse } = require('../Responses')
 
 const login = (request, response) => (
   passport.authenticate('local', (error, user) => {
@@ -13,6 +16,16 @@ const login = (request, response) => (
   })(request, response)
 )
 
+const confirmation = (request, response) => {
+  const { user } = Token.decode(request.query.token, ['user'])
+
+  UserRepository
+    .save(user, { activated: true })
+    .then(trasnformUser.withToken)
+    .then(handleResponse(response))
+}
+
 module.exports = {
-  login
+  login,
+  confirmation
 }
