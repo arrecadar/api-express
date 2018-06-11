@@ -8,6 +8,7 @@ COPY ./server.js /api/server.js
 COPY ./app /api/app
 COPY ./bootstrap /api/bootstrap
 COPY ./config /api/config
+COPY ./services /api/services
 
 WORKDIR /api
 

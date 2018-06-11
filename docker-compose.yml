@@ -24,6 +24,7 @@ services:
       - ./app:/api/app
       - ./bootstrap:/api/bootstrap
       - ./config:/api/config
+      - ./services:/api/services
 
   base-tests:
     extends: base
